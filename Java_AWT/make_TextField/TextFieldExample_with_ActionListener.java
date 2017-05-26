@@ -51,7 +51,7 @@ public class TextFieldExample_with_ActionListener extends Frame implements Actio
 		int num2 = Integer.parseInt(s2);
 		int c = 0; // 결과를 저장할 변수
 		
-		if(e.getSource()==Bplus){
+		if(e.getSource()==Bplus){ // getSource() 를 사용하면 그 이벤트가 실행되는 특정 컨테이너(?)의 모든 속성을 가져온다.(???)
 			c = num1 + num2;
 		}
 		else if(e.getSource()==Bminor){
