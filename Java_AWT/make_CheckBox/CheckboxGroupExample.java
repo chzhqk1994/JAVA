@@ -1,8 +1,7 @@
 package make_CheckBox;
 
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 
 public class CheckboxGroupExample extends Frame{
 	CheckboxGroup group; // 체크박스 그룹과 체크박스 객체들을 모두 선언
