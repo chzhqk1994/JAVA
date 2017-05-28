@@ -1,6 +1,8 @@
 package make_CheckBox;
 
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class CheckboxExample extends Frame{
 	Checkbox cb1, cb2;
@@ -18,6 +20,13 @@ public class CheckboxExample extends Frame{
 		setSize(400, 400);
 		setLayout(null);
 		setVisible(true);
+		
+        WindowAdapter WA = new WindowAdapter(){    //윈도우의 X 버튼을 누르면 꺼지게 한다.
+        	public void windowClosing(WindowEvent windowEvent) {
+              System.exit(0);
+        	}
+    };
+    addWindowListener(WA);
 	}
 	
 	public static void main(String args[]){
