@@ -8,6 +8,8 @@ public class Main_Screen extends Frame{
 	private int button_number = 9;
 	
 	Main_Screen(){
+		super("메인화면");
+		
 		버튼 = new Button[button_number];
 		
 		버튼[0] = new Button("주문");

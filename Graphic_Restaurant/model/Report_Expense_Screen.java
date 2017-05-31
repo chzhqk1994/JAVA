@@ -4,24 +4,24 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Report_Sales_Screen extends Frame{ // 판매 보고서
+public class Report_Expense_Screen extends Frame{ //지출장부
 	Button add,remove;
 	Panel p;
-	JTable sales;
+	JTable expense;
 	JScrollPane table;
-	String column[] = {"날짜", "메뉴", "수량", "총액", "비고"};
-	String data[][]={{"2017-11-15", "갈비탕", "40", "280000", ""},
-					 {"2017-11-16", "정식", "60", "265000", ""}};
+	String column[] = {"날짜", "품목", "금액", "수량", "총액", "비고"};
+	String data[][]={{"2017-11-15", "메뉴판 제작","40000", "3", "120000", ""},
+					 {"2017-11-16", "의자", "80000","5", "400000", ""}};
 	
-	Report_Sales_Screen(){
-		super("판매보고서");
+	Report_Expense_Screen(){
+		super("지출보고서");
 		
 		add = new Button("추가");
 		remove = new Button("삭제");
 		
-		sales = new JTable(data, column);
-		sales.setBounds(30, 40, 600, 600);
-		table = new JScrollPane(sales);
+		expense = new JTable(data, column);
+		expense.setBounds(30, 40, 600, 600);
+		table = new JScrollPane(expense);
 
 		p = new Panel();
 		p.add(add);
@@ -42,6 +42,6 @@ public class Report_Sales_Screen extends Frame{ // 판매 보고서
 	}
 	
 	public static void main(String args[]){
-		Report_Sales_Screen rss = new Report_Sales_Screen();
+		Report_Expense_Screen res = new Report_Expense_Screen();
 	}
 }

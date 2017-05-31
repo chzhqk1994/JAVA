@@ -14,6 +14,8 @@ public class Order_Screen2 extends Frame{
 	
 	
 	Order_Screen2(){
+		super("주문화면");
+		
 		menu = new Button[menu_number];
 		menu_name = new Label[menu_number];
 		

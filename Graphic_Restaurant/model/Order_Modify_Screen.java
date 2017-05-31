@@ -13,6 +13,8 @@ public class Order_Modify_Screen extends Frame{
 	
 	
 	Order_Modify_Screen(){
+		super("주문내역");
+		
 		menu_name = new Label[menu_number];
 		
 		menu_name[0] = new Label("갈비탕  7000 : ");

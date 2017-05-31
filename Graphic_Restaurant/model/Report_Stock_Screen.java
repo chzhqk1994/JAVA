@@ -4,25 +4,25 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Report_Sales_Screen extends Frame{ // 판매 보고서
+public class Report_Stock_Screen extends Frame{ //재고 관리
 	Button add,remove;
 	Panel p;
-	JTable sales;
+	JTable stock;
 	JScrollPane table;
-	String column[] = {"날짜", "메뉴", "수량", "총액", "비고"};
-	String data[][]={{"2017-11-15", "갈비탕", "40", "280000", ""},
-					 {"2017-11-16", "정식", "60", "265000", ""}};
+	String column[] = {"날짜", "품목", "금액", "수량", "총액", "비고"};
+	String data[][]={{"2017-11-15", "김치","20000", "3", "60000", ""},
+					 {"2017-11-16", "고추장", "38000","1", "38000", ""}};
 	
-	Report_Sales_Screen(){
-		super("판매보고서");
+	Report_Stock_Screen(){
+		super("재고 관리");
 		
 		add = new Button("추가");
 		remove = new Button("삭제");
 		
-		sales = new JTable(data, column);
-		sales.setBounds(30, 40, 600, 600);
-		table = new JScrollPane(sales);
-
+		stock = new JTable(data, column);
+		stock.setBounds(30, 40, 600, 600);
+		table = new JScrollPane(stock);
+		
 		p = new Panel();
 		p.add(add);
 		p.add(remove);
@@ -40,8 +40,8 @@ public class Report_Sales_Screen extends Frame{ // 판매 보고서
 		};
 		addWindowListener(WA);
 	}
-	
+
 	public static void main(String args[]){
-		Report_Sales_Screen rss = new Report_Sales_Screen();
+		Report_Stock_Screen rss = new Report_Stock_Screen();
 	}
 }

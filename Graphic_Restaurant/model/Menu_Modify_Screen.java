@@ -10,6 +10,8 @@ public class Menu_Modify_Screen extends Frame{
 	
 	
 	Menu_Modify_Screen(){
+		super("차림표 수정");
+		
 		menu_name = new Label[menu_number];
 		
 		menu_name[0] = new Label("갈비탕 : 7000");

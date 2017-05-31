@@ -8,6 +8,7 @@ public class Order_Screen extends Frame{
 	private int table_number = 15;
 
 	Order_Screen(){
+		super("주문화면 - 테이블선택");
 		table = new Button[table_number];
 		
 		for (int i=0; i<table_number; i++){
