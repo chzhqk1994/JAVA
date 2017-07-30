@@ -10,15 +10,14 @@ public class Menu_Screen extends Frame implements ActionListener{
 	private JTable table_menu;
 	private JScrollPane table;
 	private String column[] = {"메뉴", "가격"};
-	public String data[][]={{"갈비탕", "6000"},
+	private String data[][]={{"갈비탕", "6000"},
 							{"정식", "5000"},
 							{"육개장", "6000"}};
 	
-	Button ok;
+	private Button ok;
 	
-	Menu_Screen(String menu_name){	// 메뉴 가격을 리턴해주기 위한 생성자 함수
+	Menu_Screen(String menu_name){	// 메뉴 가격을 전달 위한 생성자 함수
 		String menu = menu_name;
-		
 	}
 	
 	Menu_Screen(){ // 기본 생성자 함수

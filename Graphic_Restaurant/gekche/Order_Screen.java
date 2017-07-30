@@ -1,79 +1,86 @@
 package gekche;
+
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.*;
 
 public class Order_Screen extends Frame implements ActionListener{
-
-	private Label headerLabel, statusLabel, menu, number;
-	private Button menu_button, order_button;
-	private TextField T_menu, T_number;
+	private Button 갈비탕, 정식, 육개장;
+	private DefaultTableModel model;
+	private Dialog d_menu;
+	private JTable table_order;
+	private JScrollPane table;
+	private String column[] = {"메뉴", "가격"};
+	private String data[][]={{"갈비탕", "0"},
+					  		 {"정식", "0"},
+							 {"육개장", "0"}};
 	
-	Order_Screen(){
-		headerLabel = new Label("메뉴와 수량을 입력하세요");
-		headerLabel.setBounds(150, 50, 150, 30);
+	Order_Screen(){ // 기본 생성자 함수
 		
-		menu = new Label("메뉴 : ");
-		menu.setBounds(50, 100, 50, 30);
+		super("주문하기");
+		d_menu = new Dialog(this);
 		
-		T_menu = new TextField();
-		T_menu.setBounds(100, 100, 70, 20);
+		갈비탕 = new Button("갈비탕");
+		갈비탕.setBounds(50, 100, 100, 60);
+		갈비탕.addActionListener(this);
+		add(갈비탕);
 		
-		number = new Label("수량 : ");
-		number.setBounds(250, 100, 50, 30);
+		정식 = new Button("정식");
+		정식.setBounds(50, 170, 100, 60);
+		정식.addActionListener(this);
+		add(정식);
 		
-		T_number = new TextField();
-		T_number.setBounds(300, 100, 70, 20);
+		육개장 = new Button("육개장");
+		육개장.setBounds(50, 240, 100, 60);
+		육개장.addActionListener(this);
+		add(육개장);
 		
-		menu_button = new Button("메뉴보기");
-		menu_button.setBounds(100, 150, 80, 50);
-		menu_button.addActionListener(this);
+		model = new DefaultTableModel(data, column);
+		table_order = new JTable(model);
+		table_order.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
-		order_button = new Button("주문");
-		order_button.setBounds(200, 150, 80, 50);
-		order_button.addActionListener(this);
+		table = new JScrollPane(table_order);
+		table.setBounds(500, 100, 200, 300);
+		add(table);
 		
-		add(headerLabel);
-		add(menu);
-		add(T_menu);
-		add(number);
-		add(T_number);
-		add(menu_button);
-		add(order_button);
-		
-		setSize(500,300);
+		setSize(800, 600);
 		setLayout(null);
 		setVisible(true);
 		
-		WindowAdapter WA = new WindowAdapter(){
+		WindowAdapter WA = new WindowAdapter(){  // 윈도우의 X버튼을 눌렀을 때 꺼지는 기능
 			public void windowClosing(WindowEvent windowEvent){
-				System.exit(0);
+				setVisible(false); // 다이얼로그 화면만 사라짐
 			}
 		};
 		addWindowListener(WA);
 	}
-	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == order_button){
-			int price= 0;
+		if(e.getSource() == 갈비탕){
+			int cnt = Integer.parseInt(data[0][1]);
+			cnt ++;
+			data[0][1] = Integer.toString(cnt);
 			
-			Menu_Screen ms = new Menu_Screen(T_menu.getText()); // 메뉴의 가격을 받아오는 코드
-			for(int i=0; i< ms.data.length; i++){ // 메뉴의 수 만큼 반복하며 메뉴를 찾아감
-				if(ms.data[i][0].equals(T_menu.getText())){ // 메뉴판의 메뉴와 입력받은 메뉴의 이름을 비교하여 같은 이름을 찾는다
-					price = Integer.parseInt(ms.data[i][1]); // 해당하는 메뉴의 가격을 숫자형으로 변환
-				}
-			}
-			Order_Dialog od = new Order_Dialog(T_menu.getText(), T_number.getText(), price); // 여기다 음식 가격도 같이 넘긴다					
+		}
+		else if(e.getSource() == 정식){
+			int cnt = Integer.parseInt(data[0][1]);
+			cnt ++;
+			data[1][1] = Integer.toString(cnt);
+		}
+		else if(e.getSource() == 육개장){
+			int cnt = Integer.parseInt(data[0][1]);
+			cnt ++;
+			data[2][1] = Integer.toString(cnt);
 		}
 		
-		else if (e.getSource() == menu_button){
-			Menu_Screen ms = new Menu_Screen();
-		}
+		model.fireTableDataChanged(); // 표에 변경사항이 생길때 마다 업데이트 시켜서 보여준다
 	}
 	
 	public static void main(String args[]){
-		Order_Screen os = new Order_Screen();
+		new Order_Screen();
 	}
 }

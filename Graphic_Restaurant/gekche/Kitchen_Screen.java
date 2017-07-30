@@ -4,7 +4,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Kitchen_Screen extends Frame{
-	Button B_clear;
+	Button B_clear, B_stock;
 	Panel p;
 	JTable expense;
 	JScrollPane table;
@@ -14,6 +14,7 @@ public class Kitchen_Screen extends Frame{
 	
 	Kitchen_Screen(){
 		B_clear = new Button("조리완료");
+		B_stock = new Button("식자재 관리");
 		
 		expense = new JTable(data, column);
 		expense.setBounds(30, 40, 600, 600);
@@ -24,7 +25,7 @@ public class Kitchen_Screen extends Frame{
 		add(table, BorderLayout.WEST);
 		add(p, BorderLayout.CENTER);
 		p.add(B_clear);
-
+		p.add(B_stock);
 		
 		setSize(800, 600);
 		setVisible(true);
@@ -38,6 +39,6 @@ public class Kitchen_Screen extends Frame{
 	}
 	
 	public static void main(String args[]){
-		Kitchen_Screen ks = new Kitchen_Screen();
+		new Kitchen_Screen();
 	}
 }
